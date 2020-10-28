@@ -17,11 +17,7 @@ window.onmessage = async (event: MessageEvent) => {
 
         let data = new FormData();
 
-        let base64 = btoa(new Uint8Array(event.data.pluginMessage.bytes).reduce((data, byte) => {
-            return data + String.fromCharCode(byte)
-        }, ''));
-        data.append('image.base64', base64);
-
+        data.append('image', new Blob([event.data.pluginMessage.bytes]), `Figma-${new Date().toLocaleString().replace(/\W+/g, "-")}`)
         data.append("format", "result");
         data.append("test", "true");
 
