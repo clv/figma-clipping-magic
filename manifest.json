@@ -1,0 +1,20 @@
+{
+    "name": "Clipping Magic BG Removal",
+    "id": "903342829195738905",
+    "api": "1.0.0",
+    "main": "dist/code.js",
+    "ui": "dist/ui.html",
+    "menu": [
+        {
+            "name": "Run",
+            "command": "removebgfunc"
+        },
+        {
+            "separator": true
+        },
+        {
+            "name": "Set API Key",
+            "command": "removebgkey"
+        }
+    ]
+}
