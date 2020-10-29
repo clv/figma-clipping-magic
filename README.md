@@ -5,7 +5,7 @@ Remove background of images with just 1-click (Using https://clippingmagic.com/a
 
 ## Usage
 
-Download it on the Figma plugin library [figma.com/c/plugin/123/Clipping-Magic-BG-Removal](https://www.figma.com/c/plugin/123/Clipping-Magic-BG-Removal)
+Download it on the Figma plugin library [figma.com/community/plugin/903342829195738905/Clipping-Magic-BG-Removal](https://www.figma.com/community/plugin/903342829195738905/Clipping-Magic-BG-Removal)
 
 ## Development
 
