@@ -19,7 +19,7 @@ window.onmessage = async (event: MessageEvent) => {
 
         data.append('image', new Blob([event.data.pluginMessage.bytes]), `Figma-${new Date().toLocaleString().replace(/\W+/g, "-")}`)
         data.append("format", "result");
-        data.append("test", "true");
+        // data.append("test", "true");
 
         fetch('https://clippingmagic.com/api/v1/images', {
             method: 'POST',
