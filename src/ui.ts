@@ -26,21 +26,35 @@ window.onmessage = async (event: MessageEvent) => {
             headers: {'Authorization': event.data.pluginMessage.apikey},
             body: data
         }).then((response: Response) => {
-            if (!response.ok) {
-                throw response
+            switch (response.status) {
+                case 400:
+                    response.json().then(res => {
+                        parent.postMessage({
+                            pluginMessage: res
+                        }, '*')
+                    })
+                    break;
+
+                case 200:
+                    response.arrayBuffer().then((res: ArrayBuffer) => {
+                        parent.postMessage({
+                            pluginMessage: new Uint8Array(res)
+                        }, '*')
+                    })
+                    break;
+
+                default:
+                    throw response;
             }
-            return response
-        }).then((response: Response) => {
-            response.arrayBuffer().then((res: ArrayBuffer) => {
-                parent.postMessage({
-                    pluginMessage: new Uint8Array(res)
-                }, '*')
-            })
         }).catch(response => {
-            if (response.hasOwnProperty("json")) {
+            if (typeof response.json == "function") {
                 response.json().then(res => {
                     parent.postMessage({
                         pluginMessage: res
+                    }, '*')
+                }).catch(() => {
+                    parent.postMessage({
+                        pluginMessage: `Exception: ${response}`
                     }, '*')
                 })
             } else {
